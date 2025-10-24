@@ -14,8 +14,8 @@ public class Trabajadores {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(nullable = false)
+    @Column
     private String nombre;
-    @Column(nullable = false)
+    @Column
     private String cargo;
 }
