@@ -20,13 +20,22 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 @Controller
-@RequestMapping("/Trabajadores")
 public class TrabajadoresController {
     final TrabajadoresRepository trabajadoresRepository;
+
     public TrabajadoresController(TrabajadoresRepository trabajadoresRepository){
         this.trabajadoresRepository = trabajadoresRepository;
     }
-    @GetMapping(value = {"", "/", "list"})
+
+
+    @GetMapping("/")
+    public String mostrarListaRaiz(Model model) {
+        model.addAttribute("listaEmpleados", trabajadoresRepository.findAll());
+        return "trabajadores/list";
+    }
+
+
+    @RequestMapping("/Trabajadores")
     public String listarEmpleados(Model model) {
         model.addAttribute("listaEmpleados", trabajadoresRepository.findAll());
         return "trabajadores/list";
